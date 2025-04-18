@@ -9,5 +9,5 @@ const UserSchema = new mongoose.Schema({
   isActive: { type: Boolean }
 });
 
-const User = mongoose.model("User", UserSchema, "User"); // ✅ Collection viết hoa
+const User = mongoose.models.User || mongoose.model("User", UserSchema, "User"); // ✅ Collection viết hoa
 module.exports = User;

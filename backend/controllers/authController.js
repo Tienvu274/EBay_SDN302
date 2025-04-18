@@ -2,7 +2,7 @@
 const User = require("../models/user");
 const Product = require("../models/product");
 const Order = require("../models/order");
-const Db = require("../config/db")
+// const Db = require("../config/db")
 
 exports.getOverview = async (req, res) => {
     try {

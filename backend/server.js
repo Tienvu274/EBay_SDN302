@@ -10,6 +10,8 @@ const cors = require('cors');
 // const EmployeeRouter = require("./routes/employee.route");
 // const DepartmentRouter = require("./routes/department.route");
 const AuthController = require("./routes/homeRoute")
+const ReviewController = require("./routes/reviewRoute")
+const disputeController = require("./routes/dispute")
 
 // Khởi tạo webserver bằng express
 const app = express(); 
@@ -34,6 +36,10 @@ app.get("/", async (req, res, next) => {
 })
 
 app.use("/api/dashboard",AuthController);
+app.use("/api/reviews", ReviewController);
+app.use("/api/disputes", disputeController);
+
+
 // app.use("/department",DepartmentRouter);
 
 

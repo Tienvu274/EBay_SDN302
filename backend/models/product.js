@@ -3,20 +3,20 @@ const mongoose = require("mongoose");
 const ProductSchema = new mongoose.Schema({
   title: { type: String },
   description: { type: String },
-  price: { type: Number }, // ✅ Sửa lại thành số
-  images: [{ type: String }], // ✅ Nếu là URL ảnh thì dùng String
+  price: { type: Number },
+  images: [{ type: String }],
   categoryId: {
     type: mongoose.Schema.Types.ObjectId,
     ref: "Category"
   },
   sellerId: {
     type: mongoose.Schema.Types.ObjectId,
-    ref: "User" // ✅ hoặc "Seller" tùy bạn tổ chức DB
+    ref: "User"
   },
   isAuction: { type: Boolean },
-  auctionEndTime: { type: Date }, // ✅ Thêm định nghĩa
+  auctionEndTime: { type: Date },
   isVisible: { type: Boolean }
 });
 
-const Product = mongoose.model("Product", ProductSchema, "Product");
-module.exports = Product;
+// ✅ Sửa dòng này để tránh lỗi OverwriteModelError
+module.exports = mongoose.models.Product || mongoose.model("Product", ProductSchema,"Product");
